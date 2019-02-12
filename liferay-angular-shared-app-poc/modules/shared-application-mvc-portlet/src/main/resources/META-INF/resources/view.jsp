@@ -1,21 +1,11 @@
 <%@ include file="/init.jsp" %>
 
 
-<app-root></app-root>
+<app-root>Loading...</app-root>
 
 
-<liferay-util:html-bottom>
-	<script src="http://localhost:3000/bundle_shared_angular_app.js?p=<%= portlet.getInstanceId()%>" type="text/javascript" />
-</liferay-util:html-bottom>
-
-<script>
-	Liferay.on(
-		'allPortletsReady',
-		function (e) {
-			// var event = new CustomEvent("DOMContentLoaded");
-			// document.dispatchEvent(event);
-
-			console.log('DOMContentLoaded Event dispatched', "<%= portlet.getInstanceId() %>");
-		}
-	);
-</script>
+<script src="http://localhost:4200/runtime.js?p<%=portlet.getPortletId().toString()%>" ></script>
+<script src="http://localhost:4200/polyfills.js?p<%=portlet.getPortletId().toString()%>" ></script>
+<script src="http://localhost:4200/styles.js?p<%=portlet.getPortletId().toString()%>" ></script>
+<script src="http://localhost:4200/vendor.js?p<%=portlet.getPortletId().toString()%>" ></script>
+<script src="http://localhost:4200/main.js?p<%=portlet.getPortletId().toString()%>" ></script>
