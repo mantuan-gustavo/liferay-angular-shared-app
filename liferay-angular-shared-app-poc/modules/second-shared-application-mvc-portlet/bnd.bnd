@@ -1,0 +1,4 @@
+Bundle-Name: second-shared-application-mvc-portlet
+Bundle-SymbolicName: com.liferay.shared.second.app
+Bundle-Version: 1.0.0
+Export-Package: com.liferay.shared.app.constants
