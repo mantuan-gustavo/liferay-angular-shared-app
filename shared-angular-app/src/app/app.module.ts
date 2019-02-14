@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {APP_BASE_HREF} from '@angular/common';
+import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -19,6 +19,10 @@ import {APP_BASE_HREF} from '@angular/common';
     ReactiveFormsModule
   ],
   providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
-  bootstrap: [AppComponent]
+  bootstrap: [],
+  entryComponents: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  ngDoBootstrap() {
+  }
+}
