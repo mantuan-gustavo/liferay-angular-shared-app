@@ -2,3 +2,4 @@ Bundle-Name: shared-application-mvc-portlet
 Bundle-SymbolicName: com.liferay.shared.app
 Bundle-Version: 1.0.0
 Export-Package: com.liferay.shared.app.constants
+Liferay-JS-Config: /META-INF/resources/config.js
