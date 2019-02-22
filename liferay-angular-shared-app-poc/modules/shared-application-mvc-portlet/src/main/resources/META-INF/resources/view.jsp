@@ -1,11 +1,13 @@
 <%@ include file="/init.jsp" %>
 
+<c:set var="app_root" value="appRoot<portlet:namespace>"/>
 
-<app-root>Loading...</app-root>
+<div id="${app_root}">Loading...</div>
 
+<aui:script require="ReactApplicationModule as app">
 
-<script src="http://localhost:4200/runtime.js?p<%=portlet.getPortletId().toString()%>" ></script>
-<script src="http://localhost:4200/polyfills.js?p<%=portlet.getPortletId().toString()%>" ></script>
-<script src="http://localhost:4200/styles.js?p<%=portlet.getPortletId().toString()%>" ></script>
-<script src="http://localhost:4200/vendor.js?p<%=portlet.getPortletId().toString()%>" ></script>
-<script src="http://localhost:4200/main.js?p<%=portlet.getPortletId().toString()%>" ></script>
+	console.log(app.default);
+
+	app.default('${app_root}');
+
+</aui:script>
