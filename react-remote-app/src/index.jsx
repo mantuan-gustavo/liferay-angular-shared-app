@@ -6,7 +6,7 @@ import Login from './routes/Login';
 import Json from './routes/Json';
 import NavBar from './components/navbar';
 import { default as Model } from './models/State-model';
-import { Router, Route, IndexRoute, browserHistory, Redirect } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory, Redirect, createMemoryHistory } from 'react-router';
 
 class Root extends Component {
   componentDidMount() {
@@ -27,8 +27,10 @@ class Root extends Component {
   }
 }
 
+const history = createMemoryHistory("/");
+
 const router = (
-  <Router>
+  <Router history={history}>
     <Route path="/" component={Root}>
       <IndexRoute component={Home} />
       <Route path="about" component={About} />
