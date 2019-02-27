@@ -6,7 +6,8 @@ var serverOpts = {
   publicPath: config.output.publicPath,
   hot: true,
   historyApiFallback: true,
-  stats: { colors: true }
+  stats: { colors: true },
+  headers: {"Access-Control-Allow-Origin": "*"}
 };
 
 // Primary app

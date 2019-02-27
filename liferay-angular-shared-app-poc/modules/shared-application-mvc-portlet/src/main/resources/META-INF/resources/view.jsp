@@ -1,12 +1,9 @@
 <%@ include file="/init.jsp" %>
 
+<script src="https://unpkg.com/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 
-<div id="appRoot_<portlet:namespace/>">Loading...</div>
+<script src='<%= PortalUtil.getStaticResourceURL(request, request.getContextPath()+"/remote-app.js") %>' type="module"></script>
 
-<aui:script require="ReactApplicationModule as app">
+<remote-app src="http://localhost:3000/app.js" selector="react-app-root" state=""></remote-app>
 
-	console.log(app.default);
 
-	app.default('appRoot_<portlet:namespace/>');
-
-</aui:script>

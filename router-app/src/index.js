@@ -3,10 +3,14 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-export default function loadApplication(namespace) {
+function loadApplication(namespace) {
   console.log('loadApplication called');
   const container = document.getElementById(namespace);
 
+  renderAppToContainer(container);
+};
+
+export default function renderAppToContainer(container){
   if(container !== null){
     ReactDOM.render(<App />, container);
 
@@ -18,6 +22,6 @@ export default function loadApplication(namespace) {
   } else {
     console.log('react-app-root container not found');
   }
-};
+}
 
 loadApplication('react-app-root');

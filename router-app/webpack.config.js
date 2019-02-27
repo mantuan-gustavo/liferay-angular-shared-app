@@ -39,5 +39,17 @@ module.exports = {
   ],
    resolve: {
     extensions: ['.js', '.jsx']
-  }
+  },
+
+  devServer: {
+    host: 'localhost',
+    port: 3001,
+    disableHostCheck: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': '*',
+    },
+    stats: 'errors-only'
+  },
+
 };
