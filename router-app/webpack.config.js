@@ -9,6 +9,7 @@ module.exports = {
     publicPath: '/',
     library: 'ReactApplicationModule',
     libraryTarget: 'umd',
+    globalObject: 'this',
     umdNamedDefine: true
   },
   module: {
