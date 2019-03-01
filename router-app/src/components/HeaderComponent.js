@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 
-function HeaderComponent (){
+function HeaderComponent (props){
+  function click(page = 'none') {
+    console.log('CLICKED::', page);
+  }
+
   return (
     <ul>
       <li>
-        <Link to="/"> Home </Link>
+        <a type="link" name="home_component" id="home_component" href="#" onClick={() => click('home Component')}> Home </a>
       </li>
       <li>
-        <Link to="/about"> About </Link>
+        <a type="link" href="#" name="about_component" id="about_component" onClick={() =>click('about Component')}> About </a>
       </li>
-      <li>
-        <Link to="/team"> Team </Link>
-      </li>
+
     </ul>
   )
 }
