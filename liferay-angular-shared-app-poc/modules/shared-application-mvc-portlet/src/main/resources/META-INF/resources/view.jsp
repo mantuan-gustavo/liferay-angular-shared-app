@@ -1,27 +1,22 @@
 <%@ include file="/init.jsp" %>
 
-<script src="https://unpkg.com/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-<script src="https://unpkg.com/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
-
-<script src="localhost:3000/app.js" type="module"></script>
+<div id="<%= htmlSelector %>"></div>
 
 <script src="<%= PortalUtil.getStaticResourceURL(request, request.getContextPath()+"/lib/require.js") %>"></script>
 
-<script src='<%= PortalUtil.getStaticResourceURL(request, request.getContextPath()+"/remote-app.js") %>' type="module"></script>
+<script type="text/javascript">
 
-<div id="react-app-root"></div>
+	var moduleName = "<%= moduleName %>";
+	var bundleSrc =  "<%= bundleSrc %>";
+	var htmlSelector = "<%= htmlSelector %>";
 
-<remote-app src="<%=bundleSrc%>" selector="<%=htmlSelector%>" moduleName="<%=moduleName%>"></remote-app>
-
-<script>
 	require.config({
-		paths: {[moduleName]: src}
+		paths: {[moduleName]: bundleSrc}
 	});
 
 	require([moduleName], function (module) {
-		shadowRoot.module = module;
-
-		shadowRoot.module.default(component.$('div'), shadowRoot, ["AAA","BBB"]);
+		module.default(document.getElementById(htmlSelector), undefined, ["AAA","BBB"]);
 	});
+
 
 </script>

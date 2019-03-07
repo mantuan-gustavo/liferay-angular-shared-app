@@ -2,24 +2,29 @@ import React, { Component } from 'react';
 import './App.css';
 import List from './List';
 
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
+    console.log("constructor", props);
     this.state = {
       desc: '',
-      items: []
+      items: props.initialState
     };
+
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
 
-  onChange = (event) => {
+  onChange(event) {
     this.setState({ desc: event.target.value });
   }
 
-  onSubmit = (event) => {
+  onSubmit(event) {
     event.preventDefault();
 
-console.log(event);
+    console.log(event);
+
     var newArray = this.state.items.slice();
     newArray.push(this.state.desc);
     this.setState({items:newArray});
@@ -29,12 +34,20 @@ console.log(event);
     return (
       <div>
         <h1>Todo App</h1>
-        <form className="App" onSubmit={this.onSubmit}>
+        <form className="App">
           <input type="text" onChange={this.onChange}/>
-          <button>Submit</button>
+          <button onClick={this.onSubmit}>Submit</button>
         </form>
-        <List items={this.state.items} />
+        <List items={this.state.items}></List>
       </div>
     );
   }
+
+  // componentDidMount() {
+  //
+  //   console.log("CDM",this.props);
+  //   this.setState({items: this.props.initialState});
+  // }
 }
+
+export default App;
