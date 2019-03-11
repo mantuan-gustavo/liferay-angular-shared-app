@@ -12,10 +12,10 @@ var serverOpts = {
 
 // Primary app
 new WebpackDevServer(webpack(config), serverOpts)
-  .listen(3000, 'localhost', function (err) {
+  .listen(3666, 'localhost', function (err) {
     if (err) {
       console.log(err);
     }
 
-    console.log('Listening at localhost:3000');
+    console.log('Listening at localhost:3666');
   });

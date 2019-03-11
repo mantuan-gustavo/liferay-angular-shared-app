@@ -29,7 +29,8 @@ public class MVCViewCommand implements MVCRenderCommand {
 		RenderRequest renderRequest, RenderResponse renderResponse)
 		throws PortletException {
 
-		renderRequest.setAttribute("_config", _configuration);
+//		renderRequest.setAttribute("_config", _configuration);
+		renderRequest.setAttribute("_config", renderRequest.getPreferences().getMap());
 
 		return "/view.jsp";
 	}

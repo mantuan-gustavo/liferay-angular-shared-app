@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node server.js",
     "test": "react-scripts test",
-    "build:webpack": "webpack --mode development",
+    "build:webpack": "webpack --mode development && npm start",
     "clean": "rm -rf build/"
   },
   "dependencies": {

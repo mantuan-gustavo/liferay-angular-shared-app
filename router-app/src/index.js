@@ -11,9 +11,9 @@ function loadApplication(namespace) {
   renderAppToContainer(container);
 };
 
-export default function renderAppToContainer(container, shadowRoot){
+export default function renderAppToContainer(container, shadowRoot, initialState = {}){
   if(container !== undefined && container !== null){
-    ReactDOM.render(<App />, container);
+    ReactDOM.render(<App initialState={initialState} />, container);
 
     // If you want your app to work offline and load faster, you can change
     // unregister() to register() below. Note this comes with some pitfalls.

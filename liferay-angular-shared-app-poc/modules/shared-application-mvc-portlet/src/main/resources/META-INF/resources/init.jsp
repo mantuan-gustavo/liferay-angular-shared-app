@@ -19,19 +19,8 @@ taglib uri="http://liferay.com/tld/util" prefix="liferay-util"%>
 <portlet:defineObjects />
 
 <%
-    LiferayPortletContext context = (LiferayPortletContext) portletConfig.getPortletContext();
-	Portlet portlet = context.getPortlet();
-
-	SharedAppPortletInstanceConfiguration _config = (SharedAppPortletInstanceConfiguration) renderRequest.getAttribute("_configuration");
-
 	String bundleSrc = portletPreferences.getValue("remote_app_bundle_src", "");
 	String htmlSelector = portletPreferences.getValue("remote_app_html_selector", "");
 	String moduleName = portletPreferences.getValue("remote_app_module_name", "");
-
-	if(Validator.isNotNull(_config)) {
-		bundleSrc = portletPreferences.getValue("remote_app_bundle_src", _config.remoteAppBundleSrc());
-		htmlSelector = portletPreferences.getValue("remote_app_html_selector", _config.remoteAppHtmlSelector());
-		moduleName = portletPreferences.getValue("remote_app_module_name", "");
-	}
 %>
 

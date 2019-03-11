@@ -7,7 +7,7 @@ module.exports = {
   output: {
     filename: 'app.js',
     publicPath: '/',
-    library: 'ReactApplicationModule',
+    library: 'ReactSimpleApplicationModule',
     libraryTarget: 'umd',
     globalObject: 'this',
     umdNamedDefine: true

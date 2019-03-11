@@ -2,21 +2,35 @@
 
 <div id="<%= htmlSelector %>"></div>
 
-<script src="<%= PortalUtil.getStaticResourceURL(request, request.getContextPath()+"/lib/require.js") %>"></script>
+<script data-senna-track="temporary" src="<%= PortalUtil.getStaticResourceURL(request, request.getContextPath()+"/lib/require.js") %>"></script>
 
-<script type="text/javascript">
+<script data-senna-track="temporary" type="text/javascript">
 
 	var moduleName = "<%= moduleName %>";
 	var bundleSrc =  "<%= bundleSrc %>";
 	var htmlSelector = "<%= htmlSelector %>";
 
 	require.config({
-		paths: {[moduleName]: bundleSrc}
+		paths: {
+		  [moduleName]: bundleSrc
+		},
+	  	context: moduleName,
+	  	waitSeconds: 7,
+	  	deps: [moduleName],
+	  	callback: function (module) {
+          module.default(document.getElementById(htmlSelector), undefined, {
+            initialText: 'olocobixo',
+            initialArray: ['AAA','BBB']
+          });
+        }
 	});
 
-	require([moduleName], function (module) {
-		module.default(document.getElementById(htmlSelector), undefined, ["AAA","BBB"]);
-	});
+	// module[moduleName]([moduleName], function (module) {
+  	//   module.default(document.getElementById(htmlSelector), undefined, {
+  	//     initialText: 'olocobixo',
+	// 	initialArray: ['AAA','BBB']
+	//   });
+	// });
 
 
 </script>

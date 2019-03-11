@@ -10,7 +10,7 @@ function loadApplication(namespace) {
   renderAppToContainer(container);
 };
 
-export default function renderAppToContainer(container, shadowRoot, initialState = []){
+export default function renderAppToContainer(container, shadowRoot, initialState){
   if(container !== undefined && container !== null){
     ReactDOM.render(<App initialState={initialState} />, container);
 
@@ -25,4 +25,4 @@ export default function renderAppToContainer(container, shadowRoot, initialState
   }
 }
 
-loadApplication('react-app-root');
+loadApplication('react-app-root-2');

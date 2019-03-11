@@ -9,10 +9,10 @@ function HeaderComponent (props){
   return (
     <ul>
       <li>
-        <a type="link" name="home_component" id="home_component" href="#" onClick={() => click('home Component')}> Home </a>
+        <a type="link" data-senna-off="true" rel="nofollow" name="home_component" id="home_component" href="#" onClick={() => click('home Component')}> Home </a>
       </li>
       <li>
-        <a type="link" href="#" name="about_component" id="about_component" onClick={() =>click('about Component')}> About </a>
+        <a type="link" data-senna-off="true" rel="nofoolow" href="#" name="about_component" id="about_component" onClick={() =>click('about Component')}> About </a>
       </li>
 
     </ul>

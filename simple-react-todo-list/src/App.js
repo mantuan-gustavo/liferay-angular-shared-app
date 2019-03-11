@@ -8,7 +8,7 @@ class App extends Component {
     console.log("constructor", props);
     this.state = {
       desc: '',
-      items: props.initialState
+      items: props.initialState ? props.initialState.initialArray : []
     };
 
     this.onChange = this.onChange.bind(this);

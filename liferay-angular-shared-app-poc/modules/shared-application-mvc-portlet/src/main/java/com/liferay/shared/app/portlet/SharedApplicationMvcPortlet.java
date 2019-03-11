@@ -22,7 +22,8 @@ import org.osgi.service.component.annotations.Component;
 		"javax.portlet.init-param.mvc-command-names-default-views=/react/route/view",
 		"javax.portlet.name=" + SharedApplicationMvcPortletKeys.SHARED_APPLICATION,
 		"javax.portlet.resource-bundle=content.Language",
-		"javax.portlet.security-role-ref=power-user,user"
+		"javax.portlet.security-role-ref=power-user,user",
+		"com.liferay.portlet.single-page-application=false"
 	},
 	service = Portlet.class
 )

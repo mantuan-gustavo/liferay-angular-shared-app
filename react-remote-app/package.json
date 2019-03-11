@@ -6,7 +6,7 @@
   "module": "es/react_app.umd.js",
   "scripts": {
     "start": "node server.js",
-    "build": "webpack --mode development",
+    "build": "webpack --mode development && npm start",
     "clean": "rm -rf build/",
     "test": "testem"
   },

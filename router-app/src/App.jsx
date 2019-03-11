@@ -15,11 +15,10 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-
-
     this.state = {
       page: 'home',
-      value: ''
+      value: '',
+      initialState: props.initialState || {}
     };
 
     this.textInput = React.createRef();
@@ -59,13 +58,16 @@ class App extends Component {
         <HeaderComponent onClickLink={this.onClickLink}/>
 
 
-          <a type="link" href="#" onClick={() => this.onClickLink('team') }> Team </a>
+          <a type="link" data-senna-off="true" rel="nofollow" href="#" onClick={() => this.onClickLink('team') }> Team </a>
 
         {this.renderComponent()}
 
         <div>
           <h1>React Ref - createRef</h1>
           <h3>Value: {this.state.value}</h3>
+          <p>
+            {this.state.initialState ? this.state.initialState.initialText : 'a'}
+          </p>
           <form >
             <input type="text" ref={this.textInput} />
             <button onClick={this.handleSubmit.bind(this)}>Submit</button>
