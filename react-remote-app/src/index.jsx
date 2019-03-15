@@ -9,6 +9,7 @@ import { default as Model } from './models/State-model';
 import { Router, Route, IndexRoute, browserHistory, Redirect, createMemoryHistory } from 'react-router';
 
 class Root extends Component {
+  
   componentDidMount() {
     Model.subject.subscribe(appState => {
       this.setState({ ...appState });
@@ -17,11 +18,12 @@ class Root extends Component {
 
   render() {
     const { counter } = this.state || {};
+    console.log(this.props);
 
     return (
       <div className="container theme-showcase">
         <NavBar counter={counter} />
-        {React.cloneElement(this.props.children, { ...this.state })}
+        {this.props.children}
       </div>
     );
   }
@@ -29,17 +31,22 @@ class Root extends Component {
 
 const history = browserHistory;
 
-const router = (
-  <Router history={history}>
-    <Route path="/" component={Root}>
-      <IndexRoute component={Home} />
-      <Route path="about" component={About} />
-      <Route path="json" component={Json} />
-      <Route path="login" component={Login} />
-    </Route>
-    <Redirect from='*' to='/' />
-  </Router>
-);
+let props1 = {
+  text: 'aaaa',
+  test: 'nnnn'
+}
+
+const router =(
+   <Router history={history}>
+      <Route path="/" component={Root}>
+        <IndexRoute render={() => (<Home {...props1} />) }/>
+        <Route path="about" component={About}   />
+        <Route path="json" component={Json} />
+        <Route path="login" component={Login} />
+      </Route>
+      <Redirect from='*' to='/' />
+    </Router>
+  );
 
 function loadApplication(namespace) {
   const container = document.getElementById(namespace);
@@ -54,7 +61,18 @@ function loadApplication(namespace) {
 
 export default function renderAppToContainer(container, shadowRoot, initialState = {}){
   if(container !== undefined && container !== null){
-    render(router, container)
+    render(
+      <Router history={history}>
+      <Route path="/" component={Root}>
+      <IndexRoute children={() => <Home {...initialState} /> } />
+       
+        <Route path="about" component={About}/>
+        <Route path="json" component={Json} />
+        <Route path="login" component={Login} />
+      </Route>
+      <Redirect from='*' to='/' />
+    </Router>
+      , container)
 
     // If you want your app to work offline and load faster, you can change
     // unregister() to register() below. Note this comes with some pitfalls.

@@ -18,9 +18,9 @@
 	  	waitSeconds: 7,
 	  	deps: [moduleName],
 	  	callback: function (module) {
+          debugger;
           module.default(document.getElementById(htmlSelector), undefined, {
-            initialText: 'olocobixo',
-            initialArray: ['AAA','BBB']
+			user: JSON.parse(JSON.stringify(${userInfo}))
           });
         }
 	});

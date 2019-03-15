@@ -33,12 +33,17 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1>Todo App</h1>
-        <form className="App">
-          <input type="text" onChange={this.onChange}/>
-          <button onClick={this.onSubmit}>Submit</button>
-        </form>
-        <List items={this.state.items}></List>
+        <h1>Welcome to ReactJS + Liferay Portlet</h1>
+       
+        <p>The entire User Object:
+          <br/>
+          <code>
+          {this.props.user ? JSON.stringify(this.props.user) : "No user loaded"}
+          </code>
+          </p>
+        <p>
+          The user first name: {this.props.user ? this.props.user.serializable.firstName : "No user loaded"}
+        </p>
       </div>
     );
   }

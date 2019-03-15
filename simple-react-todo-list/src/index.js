@@ -12,7 +12,7 @@ function loadApplication(namespace) {
 
 export default function renderAppToContainer(container, shadowRoot, initialState){
   if(container !== undefined && container !== null){
-    ReactDOM.render(<App initialState={initialState} />, container);
+    ReactDOM.render(<App user={initialState ? initialState.user : undefined} />, container);
 
     console.log('application loaded');
   } else {
