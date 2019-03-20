@@ -8,7 +8,7 @@ class App extends Component {
     console.log("constructor", props);
     this.state = {
       desc: '',
-      items: props.initialState ? props.initialState.initialArray : []
+      items: props.initialState ? props.initialState.initialArray : []      
     };
 
     this.onChange = this.onChange.bind(this);
@@ -22,8 +22,19 @@ class App extends Component {
 
   onSubmit(event) {
     event.preventDefault();
+    if (this.props.user) {
+      if (localStorage.getItem(this.props.user.serializable.firstName)) {
 
-    console.log(event);
+        localStorage.setItem(
+          this.props.user.serializable.firstName,
+          JSON.stringify(JSON.parse(localStorage.getItem(this.props.user.serializable.firstName)).concat([this.state.desc])))
+  
+      } else {        
+        localStorage.setItem(
+          this.props.user.serializable.firstName,
+          JSON.stringify([this.state.desc]))
+      }
+    }   
 
     var newArray = this.state.items.slice();
     newArray.push(this.state.desc);
@@ -44,15 +55,25 @@ class App extends Component {
         <p>
           The user first name: {this.props.user ? this.props.user.serializable.firstName : "No user loaded"}
         </p>
+        <h1>ToDoAPP</h1>
+        <form className="app">
+          <input type="text" onChange={this.onChange}/>
+          <button onClick={this.onSubmit}>Submit</button>          
+        </form>
+      
+      <List items={this.state.items}></List>
       </div>
+
+
     );
   }
 
-  // componentDidMount() {
-  //
-  //   console.log("CDM",this.props);
-  //   this.setState({items: this.props.initialState});
-  // }
+  componentDidMount() {
+    this.setState({items: this.props.user 
+      && localStorage.getItem(this.props.user.serializable.firstName) 
+      ? JSON.parse(localStorage.getItem(this.props.user.serializable.firstName)) 
+      : []});
+  }
 }
 
 export default App;
